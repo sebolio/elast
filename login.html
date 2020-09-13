@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<html>
+		<head>
+		<meta charset="utf-8">
+   		<title>Elast UI</title>
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="/css/bootstrap-seba.css" rel="stylesheet">
+   		<script src="/js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+   		<script src="/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    	<script src="/js/bootstrap.min.js"></script>
+    	<script type="text/javascript" charset="utf-8">
+			function loguear () {
+				user = $('#usuario').val()
+				pass = $('#clave').val()
+				$('#btnLoguear').attr('disabled',1)
+				$.post('/loguear', {usuario:user, clave:pass}, function(r) {
+					r=r.toString()
+					console.log('respuesta login: '+r)
+					if (r.split(':')[0]!='OK') {
+						console.log('Login incorrecto.')
+						$('#aviso').html('Login incorrecto').css('visibility','').fadeTo(200,1)
+						$('#btnLoguear').attr('disabled',false)
+					} else {
+						//guardar token de sesion en las cookies
+						$('#aviso').html('Correcto, cargando...').addClass('alert-success').removeClass('alert-error').css('visibility','').fadeTo(200,1)
+						$.cookie('sesion', r.split(':')[1])
+						location.reload()
+					}
+				}, 'text')
+			}
+			function enter (k) {
+				if(k==13){
+					loguear()
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<!-- Contenido -->
+		<div class="container">
+
+			<!-- Fila con aviso -->
+			<div class="row">
+				<div class="span4"></div>
+				<div class="span5">
+					<div class="alert alert-error" id="aviso" style="opacity:0; visibility:hidden">asd&nbsp;</div>
+				</div>
+			</div>
+
+			<!-- Fila con formulario -->
+			<div class="row">
+				<div class="span5"></div>
+				<div class="span2">
+					<input type="text" id="usuario" placeholder="Usuario" onkeydown="enter(event.keyCode)"><br>
+					<input type="password" id="clave" placeholder="Contraseña" onkeydown="enter(event.keyCode)"><br>
+					<button type="button" id="btnLoguear" class="btn btn-primary" onclick="loguear()"><i class="icon-lock icon-white"></i> Ingresar</button>
+				</div>
+				<div class="span5"></div>
+			</div>
+
+		</div>
+		
+		<div id="acciones-maquinas" style="display:none">
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">Acciones<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				<li><a href="javascript:api(\'verlog/'+maq.id+'\')">Ver log</a></li>
+				<li><a href="javascript:api(\'reiniciar/'+maq.id+'\')" role="button" data-toggle="modal">Reiniciar</a></li>
+				<li><a href="javascript:api(\'ejecutar/'+maq.id+'\')">Ejecutar comando</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+	</body>
+</html>

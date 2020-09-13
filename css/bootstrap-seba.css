@@ -1,0 +1,68 @@
+/**
+ * Fixes para que el contenido se vea mejor
+ */
+
+ .maquina { cursor: pointer; }
+
+
+/*quitar outlines azules de los botones*/
+* {
+	outline:none !important;
+}
+
+.consola p {
+  font-family: arial;
+  margin: 0 0 0px;
+  font-size: 14px;
+}
+/*bajar el cuerpo para que el menú no lo tape*/
+body {
+	padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+/*arreglar no sé qué*/
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+
+/*badges más bonitos cuando sólo tengan 1 número*/
+.badge {
+	padding: 1px 6px 2px !important;
+}
+
+/*para variar, otro aweonamiento de Bootstrap.. tienen la prioridad del popover debajo de los modals*/
+.popover {
+	z-index: 1090;
+}
+.popover-content p {
+    font-size: 13px;
+}
+
+/*consolas*/
+.consola {
+	height:280px;
+	border:1px solid gray;
+	background:#f0f0f0;
+	padding:10px;
+	font-size:11px;
+	font-family:tahoma;
+	overflow-y:auto;
+}
+#consolas.modal {
+	width: 900px;
+	margin: -300px 0 0 -455px;
+}
+
+#consolas div.form-search {
+	padding: 20px 0px;
+	margin-top: -45px;
+	position: absolute;
+	margin-left: 500px;
+}
+#consolas div.modal-header {
+	height: 43px;
+	padding-top: 15px;
+}

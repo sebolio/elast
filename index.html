@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<html>
+		<head>
+		<meta charset="utf-8">
+   		<title>Elast Viewer</title>
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="/css/bootstrap-seba.css" rel="stylesheet">
+	    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+   		<script src="/js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+   		<script src="/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    	<script src="/js/bootstrap.min.js"></script>
+   		<script src="//localhost:8080/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
+    	<script src="/js/elast-ui.js"></script>
+	</head>
+
+	<body>
+		<!-- Menú superior -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand">Elast</a>
+					<ul class="nav ">
+						<li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Operaciones<b class="caret">&nbsp;</b></a>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:consola.abrir('historial')">Ver consolas</a></li>
+								<li><a href="javascript:api('pull')">Git pull</a></li>
+								<li><a href="javascript:api('subir', 'Distribuir archivo')">Distribuir archivo</a></li>
+								<li><a href="javascript:api('subirlogs')">Exportar logs</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="/salir">Salir</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Contenido -->
+		<div class="container">
+			<div class="row">
+
+				<div class="span12">
+					<table border="0" cellspacing="0" cellpadding="0" id="listaMaquinas" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Instancia</th>
+								<th>AMI</th>
+								<th>Host</th>
+								<th>Versión</th>
+								<th>Máquina</th>
+							</tr>
+						</thead>
+						<tbody>&nbsp;</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- Botón "acciones" de la columna "Máquina" -->
+		<div id="acciones-maquinas" style="display:none">
+			<div class="btn-group" style="width:50px">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">Acciones<span class="caret"></span></a>
+				<span class="badge badge-important" style="margin-left:5px;display:none">0</span>
+				<ul class="dropdown-menu">
+				<li><a href="javascript:consola.abrir(%id%)">Abrir consola</a></li>
+				<li><a href="javascript:api('verlog', %id%)">Ver log</a></li>
+				<li><a href="javascript:api('reiniciar', %id%)" role="button" data-toggle="modal">Reiniciar</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+
+
+		<!-- Administrador de consolas ™ -->
+		<div class="modal hide" id="consolas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3>Administrador de consolas</h3>
+						<div class="form-search" style="padding:20px 0px">
+							<input type="text" class="input-large input" placeholder="nuevo comando" id="nuevoComando" data-content="Ingresar cualquier comando UNIX para ser ejecutado en todas las máquinas o una en particular, y presionar ENTER.">
+							<select id="dondeEjecutar" style="width:100px">
+								<option value="*">Todas</option>
+							</select>
+						</div>
+				</div>
+				<div class="modal-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tabhistorial" id="controltabhistorial" data-toggle="tab">Historial</a></li>
+					</ul>
+					<div class="tab-content">
+					  <div class="tab-pane active" id="tabhistorial"><div class="consola">
+					  <br>Sistema iniciado, esperando comandos
+					  	</div></div>
+					</div>
+
+					<script>
+					  $(function () {
+					    $('#myTab a:last').tab('show');
+					  })
+					</script>
+
+
+				</div>
+		</div>
+
+
+
+
+	</body>
+</html>

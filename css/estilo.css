@@ -1,0 +1,133 @@
+/**
+ * 	Elast CSS
+ */
+
+body { background: #f1f1f1; }
+tbody, div { background:#fff; }
+.containah { background:transparent; }
+
+h1 {
+	font-size:20px;
+}
+h1 small {
+	font-size: 13px;
+	display: block;
+	margin-right: 63px;
+	float: right;
+	margin-top:7px;
+}
+
+.ventana {
+	box-shadow: 2px 2px 10px #666;
+}
+table#listaMaquinas {
+	width:800px;
+	margin:auto;
+}
+
+table.ventana {
+	font-size:11px;
+	border: 1px solid #9BB7E2;
+	border-radius: 5px;
+	border-radius: 5;
+}
+
+table.ventana thead th {
+	background: #DAD5FF;
+	padding: 11px;
+	font-family: helvetica;
+	text-align:left;
+}
+table.ventana thead th:first {
+	text-align:center;
+}
+
+table.ventana tbody td {
+	padding:10px;
+	font-family: helvetica;
+}
+
+table.ventana tbody tr:hover {
+	background: #D7FFF5;
+}
+
+
+.izquierda {
+	float:left;
+}
+.derecha {
+	float:left;
+	margin-left:20px;
+}
+
+
+div.ventana ul {
+	padding-top:10px;
+}
+div.ventana {
+	font-size:11px;
+	border: 1px solid #9BB7E2;
+	border-radius: 5px;
+	border-radius: 5;
+	padding-bottom:10px;
+}
+
+div.ventana h2 {
+	background:red;
+	background: #DAD5FF;
+	padding: 11px;
+	font-family: helvetica;
+	font-size:11px;
+	margin:0;
+	text-align:center;
+}
+
+ul.ops li {
+	margin:0;
+}
+
+ul.ops {
+	list-style:none;
+	padding:0;
+	margin:0;
+	font-family:helvetica;
+	font-size:11px;
+	text-align:left;
+}
+ul.globales li {
+	padding:5px 20px;
+}
+
+.containah {
+	width:995px;
+	margin:auto;
+/*	text-align:center;*/
+}
+
+
+
+.consola {
+	width:500px;
+	height:200px;
+}
+.consola ul {
+	margin:0;
+	padding:20px;
+	list-style:none;
+/*	height:500px;*/
+}
+.consola .scroll {
+	overflow:auto;
+	height:165px;
+}
+
+a {
+	text-decoration:none;
+	color:#303069;
+}
+a:hover {
+	color:#005CFF;
+}
+a:active {
+	color:#000000;
+}
