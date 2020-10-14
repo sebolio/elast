@@ -24,21 +24,6 @@ sh.stdout.on('data', function(data) {
 	socket.emit('linea', {id:id, contenido:d}) //avisar al Elast
 });
 
-
-/**
- * Te dice quien es trolo
- *
- * @param name
- * @param age
- * @returns {string}
- */
-function trolo(name, age) {
-    let nombre = name+'.';
-    return `soy ${nombre} y tengo ${age}`
-}
-
-console.log(` tenemos un ${trolo(this, this)}`);
-
 //CONEXION
 socket.on('hi', function(){
 	console.log('conectado a servidor');
